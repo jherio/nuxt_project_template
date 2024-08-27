@@ -7,6 +7,10 @@
     <ReusableButton @click="incrementCounter">
       {{ $t('clickMe') }} ({{ counter }})
     </ReusableButton>
+    <div v-if="pending">Loading users...</div>
+    <ul v-else>
+      <li v-for="user in users" :key="user.id">{{ user.name }}</li>
+    </ul>
   </div>
 </template>
 
@@ -17,12 +21,16 @@ import { useCounterStore } from '~/store/counter'
 import { gsap } from 'gsap'
 import { useHead } from '#imports'
 import ReusableButton from '~/components/atoms/ReusableButton.vue'
+import { useApi } from '~/composables/useApi'
 
 const { t } = useI18n()
 const counterStore = useCounterStore()
+const { getUsers } = useApi()
 
 const title = ref(null)
 const counter = ref(0)
+
+const { data: users, pending } = await getUsers()
 
 const incrementCounter = () => {
   counter.value++
