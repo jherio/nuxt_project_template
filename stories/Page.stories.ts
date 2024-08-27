@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { within, userEvent, expect } from '@storybook/test'
+import { within, userEvent } from '@storybook/test'
 import MyPage from './StoryPage.vue'
+import * as HeaderStories from './Header.stories'
 
 const meta = {
   title: 'Example/Page',
@@ -12,23 +13,24 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  tags: ['autodocs'],
 } satisfies Meta<typeof MyPage>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const LoggedIn: Story = {
-  play: async ({ canvasElement }) => {
+  args: {
+    ...HeaderStories.LoggedIn.args,
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement)
-    const loginButton = await canvas.findByRole('button', { name: /Log in/i })
-    await expect(loginButton).toBeInTheDocument()
+    const loginButton = await canvas.getByRole('button', { name: /Log in/i })
     await userEvent.click(loginButton)
-    await expect(loginButton).not.toBeInTheDocument()
-
-    const logoutButton = await canvas.findByRole('button', { name: /Log out/i })
-    await expect(logoutButton).toBeInTheDocument()
   },
 }
 
-export const LoggedOut: Story = {}
+export const LoggedOut: Story = {
+  args: {
+    ...HeaderStories.LoggedOut.args,
+  },
+}

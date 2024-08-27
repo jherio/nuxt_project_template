@@ -1,4 +1,4 @@
-import { UseFetchOptions } from 'nuxt/app'
+import type { UseFetchOptions } from 'nuxt/app'
 
 interface User {
   id: number
@@ -12,7 +12,7 @@ export const useApi = () => {
 
   const getUsers = (options: UseFetchOptions<User[]> = {}) => {
     return useFetch<User[]>('https://jsonplaceholder.typicode.com/users', {
-      baseURL: config.public.apiBase,
+      baseURL: config.public.apiBase as string,
       ...options,
     })
   }
