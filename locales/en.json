@@ -1,1 +1,5 @@
-{"welcome": "Welcome"}
+{
+  "welcomeMessage": "Welcome to your Nuxt 3 app",
+  "description": "This is an example of a Nuxt 3 app with i18n, Pinia, and GSAP animations.",
+  "clickMe": "Click me"
+}
