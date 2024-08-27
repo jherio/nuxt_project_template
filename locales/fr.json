@@ -1,5 +1,7 @@
 {
   "welcomeMessage": "Bienvenue dans votre application Nuxt 3",
   "description": "Ceci est un exemple d'application Nuxt 3 avec i18n, Pinia et des animations GSAP.",
-  "clickMe": "Cliquez-moi"
+  "clickMe": "Cliquez-moi",
+  "appTitle": "Mon application Nuxt 3",
+  "footerText": "© 2024 Mon application Nuxt 3. Tous droits réservés."
 }
