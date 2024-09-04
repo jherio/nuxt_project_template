@@ -11,7 +11,8 @@
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest"
+    "test": "vitest",
+    "start": "node .output/server/index.mjs"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.22",

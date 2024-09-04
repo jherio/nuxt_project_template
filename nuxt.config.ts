@@ -29,9 +29,15 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       compatibilityDate: '2024-08-22',
+      apiBase: 'https://jsonplaceholder.typicode.com',
     },
   },
   routeRules: {
     '/': { redirect: '/IndexPage' },
+  },
+  vite: {
+    optimizeDeps: {
+      exclude: ['punycode'],
+    },
   },
 })
